@@ -1,0 +1,8 @@
+{
+  "app_title": "Débogage Canard en Caoutchouc",
+  "overlay_text_p1": "Le \"Débogage Canard en Caoutchouc\" est une méthode de débogage de code où un programmeur explique son code ligne par ligne à un objet inanimé, comme un canard en caoutchouc. En verbalisant le problème, on découvre souvent des solutions ou des erreurs qui, autrement, passeraient inaperçues.",
+  "overlay_text_p2": "Essayez ! Expliquez votre code à ce canard.",
+  "created_by": "Créé par {{name}}",
+  "buy_me_a_coffee": "Offrez-moi un café",
+  "cuack": "Coin !"
+}

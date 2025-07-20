@@ -1,0 +1,8 @@
+{
+  "app_title": "Rubber Duck Debugging",
+  "overlay_text_p1": "El \"Rubber Duck Debugging\" es un método de depuración de código en el que un programador explica su código línea por línea a un objeto inanimado, como un pato de goma. Al verbalizar el problema, a menudo se descubren soluciones o errores que de otra manera pasarían desapercibidos.",
+  "overlay_text_p2": "¡Inténtalo! Explícale tu código a este pato.",
+  "created_by": "Creado por {{name}}",
+  "buy_me_a_coffee": "Cómprame un café",
+  "cuack": "Cuack!"
+}

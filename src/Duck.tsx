@@ -3,9 +3,11 @@ import { useGLTF, Text, Circle } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import { Group, Shape, ShapeGeometry, DoubleSide } from 'three';
 import { useTransition, animated } from '@react-spring/three';
+import { useTranslation } from 'react-i18next';
 
 // El componente ahora recibe ambas props
 function SpeechBubble({ isSoundEnabled, hasInteracted }: { isSoundEnabled: boolean; hasInteracted: boolean }) {
+  const { t } = useTranslation();
   const [visible, setVisible] = useState(false);
   const audioRef = useRef(new Audio('https://www.myinstants.com/media/sounds/quack_5.mp3'));
 
@@ -74,7 +76,7 @@ function SpeechBubble({ isSoundEnabled, hasInteracted }: { isSoundEnabled: boole
             anchorX="center"
             anchorY="middle"
           >
-            Cuack!
+            {t('cuack')}
           </Text>
         </animated.group>
       )

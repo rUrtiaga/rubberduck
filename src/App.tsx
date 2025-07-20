@@ -4,8 +4,10 @@ import { OrbitControls } from '@react-three/drei';
 import { Duck } from './Duck';
 import { GitHubIcon, LinkedInIcon, BuyMeACoffeeIcon } from './Icons';
 import './App.css';
+import { useTranslation } from 'react-i18next';
 
 function App() {
+  const { t } = useTranslation();
   const [showOverlay, setShowOverlay] = useState(true);
   const [duckScale, setDuckScale] = useState([3, 3, 3]);
   const [isSoundEnabled, setIsSoundEnabled] = useState(true);
@@ -57,29 +59,27 @@ function App() {
       <div className={`canvas-container ${showOverlay ? 'blurred' : ''}`} onClick={handleClick}>
         {showOverlay && (
           <div className="overlay">
-            <h1>Rubber Duck Debugging</h1>
-            <p>
-              El "Rubber Duck Debugging" es un método de depuración de código en el que un programador explica su código línea por línea a un objeto inanimado, como un pato de goma. Al verbalizar el problema, a menudo se descubren soluciones o errores que de otra manera pasarían desapercibidos.
-            </p>
-            <p>
-              ¡Inténtalo! Explícale tu código a este pato.
-            </p>
+            <h1>{t('app_title')}</h1>
+            <p>{t('overlay_text_p1')}</p>
+            <p>{t('overlay_text_p2')}</p>
           </div>
         )}
         <Canvas style={{ height: '100vh' }} camera={{ position: [0, 0, 5], fov: 50 }}>
-          <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} />
-          <ambientLight intensity={0.5} />
-          <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={0.7} />
-          <pointLight position={[-10, -10, -10]} intensity={0.5} />
-          <directionalLight position={[0, 5, 5]} intensity={2.0} />
-          <Suspense fallback={null}>
-            <Duck position={[2, -5.2, -1]} scale={duckScale} isSoundEnabled={isSoundEnabled} hasInteracted={hasInteracted} />
-          </Suspense>
+          <>
+            <OrbitControls enableZoom={false} enablePan={false} enableRotate={true} />
+            <ambientLight intensity={0.5} />
+            <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={0.7} />
+            <pointLight position={[-10, -10, -10]} intensity={0.5} />
+            <directionalLight position={[0, 5, 5]} intensity={2.0} />
+            <Suspense fallback={null}>
+              <Duck position={[2, -5.2, -1]} scale={duckScale} isSoundEnabled={isSoundEnabled} hasInteracted={hasInteracted} />
+            </Suspense>
+          </>
         </Canvas>
       </div>
 
       <footer className="app-footer">
-        <span>Creado por rUrtiaga</span>
+        <span>{t('created_by', { name: 'rUrtiaga' })}</span>
         <a href="https://github.com/rUrtiaga" target="_blank" rel="noopener noreferrer">
           <GitHubIcon />
         </a>
@@ -88,7 +88,7 @@ function App() {
         </a>
         <a href="https://www.buymeacoffee.com/rUrtiaga" target="_blank" rel="noopener noreferrer" className="bmac-link">
           <BuyMeACoffeeIcon />
-          <span>Cómprame un café</span>
+          <span>{t('buy_me_a_coffee')}</span>
         </a>
       </footer>
     </div>
