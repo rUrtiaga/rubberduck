@@ -2,6 +2,7 @@ import React, { Suspense, useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import { Duck } from './Duck';
+import { GitHubIcon, LinkedInIcon, BuyMeACoffeeIcon } from './Icons';
 import './App.css';
 
 function App() {
@@ -76,6 +77,20 @@ function App() {
           </Suspense>
         </Canvas>
       </div>
+
+      <footer className="app-footer">
+        <span>Creado por rUrtiaga</span>
+        <a href="https://github.com/rUrtiaga" target="_blank" rel="noopener noreferrer">
+          <GitHubIcon />
+        </a>
+        <a href="https://linkedin.com/in/rmu" target="_blank" rel="noopener noreferrer">
+          <LinkedInIcon />
+        </a>
+        <a href="https://www.buymeacoffee.com/rUrtiaga" target="_blank" rel="noopener noreferrer" className="bmac-link">
+          <BuyMeACoffeeIcon />
+          <span>Cómprame un café</span>
+        </a>
+      </footer>
     </div>
   );
 }
