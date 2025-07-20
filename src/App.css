@@ -1,38 +1,119 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  overflow: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
+.App {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-color: #ffffff;
+  transition: background-color 0.5s ease;
+}
+
+.App.dark-mode {
+  background-color: #121212;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 10;
+  pointer-events: auto; /* Habilitar eventos de puntero para el clic */
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo más transparente */
+  transition: opacity 1s ease-out; /* Solo transición para opacidad */
+}
+
+.App.dark-mode .overlay {
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: backdrop-filter 1s ease-out; /* Transición para el blur */
+  backdrop-filter: blur(1px); /* Blur suave por defecto */
+  -webkit-backdrop-filter: blur(1px); /* Para compatibilidad con Safari */
+}
+
+.canvas-container.blurred {
+  backdrop-filter: blur(5px); /* Blur más fuerte cuando el overlay está visible */
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.overlay-hidden {
+  opacity: 0;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.overlay h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra para el texto */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.overlay p {
+  font-size: 1.2em;
+  max-width: 400px; /* Reducir el ancho máximo del texto */
+  line-height: 1.5;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Sombra para el texto */
+}
+
+/* --- Estilos para el botón de sonido --- */
+.sound-toggle-button, .dark-mode-toggle-button {
+  position: absolute;
+  top: 20px;
+  z-index: 1000; /* Asegura que esté por encima de todo */
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: background-color 0.3s, transform 0.2s;
 }
 
-.App-link {
-  color: #61dafb;
+.sound-toggle-button {
+  right: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dark-mode-toggle-button {
+  right: 80px;
+}
+
+.sound-toggle-button:hover, .dark-mode-toggle-button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.sound-toggle-button:active, .dark-mode-toggle-button:active {
+  transform: scale(0.9);
+}
+
+.App.dark-mode .sound-toggle-button, .App.dark-mode .dark-mode-toggle-button {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+}
+
+.App.dark-mode .sound-toggle-button:hover, .App.dark-mode .dark-mode-toggle-button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
 }
